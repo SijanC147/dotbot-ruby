@@ -27,7 +27,7 @@ class Ruby(dotbot.Plugin):
     _directive = "ruby"
 
     _default_values = {
-        "package": "",
+        "gem": "",
         "flags": [],
         "stdin": False,
         "stdout": False,
@@ -48,16 +48,16 @@ class Ruby(dotbot.Plugin):
         for pkg_info in data:
             data = self._apply_defaults(pkg_info)
 
-            success &= self._handle_single_package(data) == 0
+            success &= self._handle_single_gem(data) == 0
         if not success:
-            self._log.warning("Not all packages installed.")
+            self._log.warning("Not all gems installed.")
         else:
-            self._log.info("Finished installing go packages")
+            self._log.info("Finished installing ruby gems")
         return success
 
-    def _handle_single_package(self, data):
-        package = data.get("package", "")
-        if not package:
+    def _handle_single_gem(self, data):
+        gem = data.get("gem", "")
+        if not gem:
             return 0
         with open(os.devnull, "w") as devnull:
             stdin = None if data.get("stdin", False) else devnull
@@ -66,7 +66,7 @@ class Ruby(dotbot.Plugin):
 
             flags = data.get("flags", [])
 
-            cmd = [self._gem_exec, "install"] + flags + [package]
+            cmd = [self._gem_exec, "install"] + flags + [gem]
             self._log.warning(f'Running command: {" ".join(cmd)}')
             ret = subprocess.call(
                 cmd,
@@ -88,6 +88,6 @@ class Ruby(dotbot.Plugin):
         if isinstance(data, dict):
             base.update(data)
         else:
-            base.update({"package": data})
+            base.update({"gem": data})
 
         return base

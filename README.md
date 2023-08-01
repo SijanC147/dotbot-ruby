@@ -27,8 +27,7 @@ detailed (dict with flags passed to `gem install` command). Example:
 ```yaml
 - ruby:
   - iStats
-  - package:
-    - chronic
+  - gem: chronic
     flags: ['--user-install']
     stdout: true
     stderr: true
