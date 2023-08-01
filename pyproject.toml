@@ -1,0 +1,24 @@
+[project]
+name = "dotbot-ruby"
+dynamic = ["version"]
+urls = { "Source" = "https://github.com/sijanc147/dotbot-ruby", "Bug Tracker" = "https://github.com/sijanc147/dotbot-ruby/issues" }
+description = "Dotbot plugin to install ruby gems"
+
+[tool.pylint."messages control"]
+disable = [
+    "raw-checker-failed",
+    "bad-inline-option",
+    "locally-disabled",
+    "file-ignored",
+    "suppressed-message",
+    "useless-suppression",
+    "deprecated-pragma",
+    "use-symbolic-message-instead",
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "missing-final-newline",
+    "invalid-name",
+    "line-too-long",
+    "unspecified-encoding",
+]
