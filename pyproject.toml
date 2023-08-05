@@ -4,6 +4,9 @@ dynamic = ["version"]
 urls = { "Source" = "https://github.com/sijanc147/dotbot-ruby", "Bug Tracker" = "https://github.com/sijanc147/dotbot-ruby/issues" }
 description = "Dotbot plugin to install ruby gems"
 
+[tool.pdm.dev-dependencies]
+dev = ["dotbot>=1.19.2"]
+
 [tool.pylint."messages control"]
 disable = [
     "raw-checker-failed",
